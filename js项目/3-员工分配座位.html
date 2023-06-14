@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>员工座位分配</title>
+  <script src="https://unpkg.com/vue@2.6.14"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>员工座位分配</h1>
+    <button @click="addEmployee">添加员工</button>
+    <table>
+      <tr v-for="(employee, index) in employees" :key="index">
+        <td>{{ employee.name }}</td>
+        <td>
+          <input type="text" v-model="employee.seat" @change="updateSeat(employee, index)">
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        employees: [
+          { name: '员工1', seat: '' },
+          { name: '员工2', seat: '' },
+          // 在此添加其他员工
+        ]
+      },
+      methods: {
+        addEmployee() {
+          this.employees.push({ name: `员工${this.employees.length + 1}`, seat: '' });
+        },
+        updateSeat(employee, index) {
+          // 在这里可以编写逻辑来更新员工的座位
+          // 比如，将employee.seat保存到数据库中
+        }
+      }
+    });
+  </script>
+</body>
+</html>
